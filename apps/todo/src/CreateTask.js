@@ -11,8 +11,12 @@ class CreateTask extends Component {
   }
 
   keyDown = (event) => {
+    if (!this.state.name) {
+      return;
+    }
     if (event.keyCode === 13) {
       this.props.createHandler(this.state.name);
+      this.setState({ name: '' });
     }
   }
 
@@ -21,6 +25,7 @@ class CreateTask extends Component {
       <div>
         <input
           type="text"
+          value={this.state.name}
           onChange={this.handleChange}
           onKeyDown={this.keyDown}
           />
