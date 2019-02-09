@@ -33,13 +33,19 @@ class App extends Component {
     this.setState({ tasks: tasks }); // this.setState({ tasks });
   }
 
+  handleRemove = (taskId) => {
+    console.log(taskId);
+  }
+
   render() {
     return (
       <div>
         <CreateTask createHandler={this.handleCreate} />
         <TasksContainer
           todo={this.state.tasks}
-          handleChange={this.handleChange} />
+          handleChange={this.handleChange}
+          handleRemove={this.handleRemove}
+          />
       </div>
     );
   }

@@ -9,6 +9,7 @@ const TaskContainer = (props) => (
         key={`t-${task.id}`}
         task={task}
         handleChange={(event) => props.handleChange(event, task.id)}
+        handleRemove={() => props.handleRemove(task.id)}
       />
     ))}
   </div>
