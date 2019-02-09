@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 
+import Task from './Task';
+
 class TaskContainer extends Component {
 
   state = {
     day: 'sobota',
     tasks: [
-      { id: 1, name: 'Odkurzyc', comlpeted: false },
-      { id: 2, name: 'Zakupy', comlpeted: false },
-      { id: 3, name: 'Nauczyć się Reacta', comlpeted: false }
+      { id: 1, name: 'Odkurzyc', completed: false },
+      { id: 2, name: 'Zakupy', completed: true },
+      { id: 3, name: 'Nauczyć się Reacta', completed: false }
     ]
   };
 
@@ -15,7 +17,11 @@ class TaskContainer extends Component {
     return (
       <div>
         {this.state.tasks.map(task => (
-          <p key={`t-${task.id}`}>{task.name}</p>
+          <Task
+            key={`t-${task.id}`}
+            fafik={task.name}
+            mruczek={task.completed}
+          />
         ))}
       </div>
     );
