@@ -5,13 +5,13 @@ import TasksContainer from './TaskContainer';
 class App extends Component {
 
   state = {
-    day: 'sobota',
-    tasks: [
-      { id: 95, name: 'Odkurzyc', completed: false },
-      { id: 24, name: 'Zakupy', completed: true },
-      { id: 542, name: 'Nauczyć się Reacta', completed: false }
-    ]
+    tasks: []
   };
+
+  componentWillMount() {
+    const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    this.setState({ tasks });
+  }
 
   updateTask = (taskId, newValue, field) => {
     const taskIndex = this.state.tasks.findIndex(task => task.id === taskId);
@@ -22,6 +22,7 @@ class App extends Component {
     const tasks = [...this.state.tasks];
     tasks[taskIndex] = task;
 
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     this.setState({ tasks: tasks });  // this.setState({ tasks });
   }
 
@@ -38,6 +39,8 @@ class App extends Component {
     const tasks = [...this.state.tasks];
     const task = { id: uuId, name: name, completed: false };
     tasks.push(task);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     this.setState({ tasks: tasks }); // this.setState({ tasks });
   }
 
@@ -45,6 +48,8 @@ class App extends Component {
     const taskIndex = this.state.tasks.findIndex(task => task.id === taskId);
     const tasks = [...this.state.tasks];
     tasks.splice(taskIndex, 1);
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
     this.setState({ tasks });
   }
 
