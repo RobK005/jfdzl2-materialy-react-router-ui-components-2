@@ -13,16 +13,24 @@ class App extends Component {
     ]
   };
 
-  handleChange = (event, taskId) => {
+  updateTask = (taskId, newValue, field) => {
     const taskIndex = this.state.tasks.findIndex(task => task.id === taskId);
     const task = { ...this.state.tasks[taskIndex] };
 
-    task.completed = event.target.checked;
+    task[field] = newValue;
 
     const tasks = [...this.state.tasks];
     tasks[taskIndex] = task;
 
     this.setState({ tasks: tasks });  // this.setState({ tasks });
+  }
+
+  handleChange = (event, taskId) => {
+    this.updateTask(taskId, event.target.checked, 'completed');
+  }
+
+  updateHandler = (newName, taskId) => {
+    this.updateTask(taskId, newName, 'name');
   }
 
   handleCreate = (name) => {
@@ -38,18 +46,6 @@ class App extends Component {
     const tasks = [...this.state.tasks];
     tasks.splice(taskIndex, 1);
     this.setState({ tasks });
-  }
-
-  updateHandler = (newName, taskId) => {
-    const taskIndex = this.state.tasks.findIndex(task => task.id === taskId);
-    const task = { ...this.state.tasks[taskIndex] };
-
-    task.name = newName;
-
-    const tasks = [...this.state.tasks];
-    tasks[taskIndex] = task;
-
-    this.setState({ tasks: tasks });  // this.setState({ tasks });
   }
 
   render() {
