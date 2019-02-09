@@ -5,15 +5,17 @@ class TaskContainer extends Component {
   state = {
     day: 'sobota',
     tasks: [
-      'Odkurzyc', 'Zakupy', 'Nauczyć się Reacta'
+      { id: 1, name: 'Odkurzyc', comlpeted: false },
+      { id: 2, name: 'Zakupy', comlpeted: false },
+      { id: 3, name: 'Nauczyć się Reacta', comlpeted: false }
     ]
   };
 
   render() {
     return (
       <div>
-        {this.state.tasks.map((task, index) => (
-          <p key={`t-${index}`}>{task}</p>
+        {this.state.tasks.map(task => (
+          <p key={`t-${task.id}`}>{task.name}</p>
         ))}
       </div>
     );
