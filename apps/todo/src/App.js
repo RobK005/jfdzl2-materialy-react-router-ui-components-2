@@ -45,8 +45,10 @@ class App extends Component {
     const task = { ...this.state.tasks[taskIndex] };
 
     task.name = newName;
+
     const tasks = [...this.state.tasks];
     tasks[taskIndex] = task;
+
     this.setState({ tasks: tasks });  // this.setState({ tasks });
   }
 
