@@ -13,7 +13,7 @@ class TaskContainer extends Component {
     return (
       <div>
         {this.state.tasks.map((task, index) => (
-          <p key={index}>{task}</p>
+          <p key={`t-${index}`}>{task}</p>
         ))}
       </div>
     );
