@@ -13,7 +13,6 @@ class App extends Component {
   };
 
   handleChange = (event, taskId) => {
-    console.log('mam taskId', taskId);
     const taskIndex = this.state.tasks.findIndex(task => task.id === taskId);
     const task = { ...this.state.tasks[taskIndex] };
 
@@ -29,9 +28,8 @@ class App extends Component {
     return (
       <div>
         <TasksContainer
-          todos={this.state.tasks}
-          handleChange={this.handleChange}
-        />
+          todo={this.state.tasks}
+          handleChange={this.handleChange} />
       </div>
     );
   }
