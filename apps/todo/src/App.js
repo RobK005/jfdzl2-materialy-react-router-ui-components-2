@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import CreateTask from './CreateTask';
 import TasksContainer from './TaskContainer';
 class App extends Component {
 
@@ -24,9 +25,18 @@ class App extends Component {
     this.setState({ tasks: tasks });  // this.setState({ tasks });
   }
 
+  handleCreate = (name) => {
+    const uuId = Math.floor(Math.random() * 10000);
+    const tasks = [...this.state.tasks];
+    const task = { id: uuId, name: name, completed: false };
+    tasks.push(task);
+    this.setState({ tasks: tasks }); // this.setState({ tasks });
+  }
+
   render() {
     return (
       <div>
+        <CreateTask createHandler={this.handleCreate} />
         <TasksContainer
           todo={this.state.tasks}
           handleChange={this.handleChange} />
