@@ -18,6 +18,8 @@ class Task extends Component {
     if (event.keyCode === 13) {
       this.props.updateHandler(this.state.name);
       this.setState({ name: '', editMode: false });
+    } else if (event.keyCode === 27) {
+      this.setState({ editMode: false });
     }
   }
 
