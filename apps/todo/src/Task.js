@@ -1,4 +1,12 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
 
 class Task extends Component {
 
@@ -30,10 +38,16 @@ class Task extends Component {
   renderTask() {
     if (this.state.editMode) {
       return (
-        <input type="text" defaultValue={this.props.task.name} onChange={this.handleChange} onKeyDown={this.keyDown}/>
+        <ListItemText>
+          <TextField
+            type="text"
+            defaultValue={this.props.task.name}
+            onChange={this.handleChange}
+            onKeyDown={this.keyDown}/>
+        </ListItemText>
       );
     }
-    return <span onClick={this.handleClick}>{this.props.task.name}</span>;
+    return <ListItemText onClick={this.handleClick}>{this.props.task.name}</ListItemText>;
   }
 
   render () {
@@ -42,15 +56,14 @@ class Task extends Component {
     ? { textDecoration: 'line-through' }
     : {};
     return (
-      <div style={styles}>
-        <input
-          type="checkbox"
+      <ListItem style={styles}>
+        <Checkbox
           checked={this.props.task.completed}
           onChange={this.props.handleChange}
         />
         {this.renderTask()}
-        <button onClick={this.props.handleRemove}>X</button>
-      </div>
+        <Button variant="contained" color="secondary" onClick={this.props.handleRemove}><DeleteIcon/></Button>
+      </ListItem>
     );
   }
 }

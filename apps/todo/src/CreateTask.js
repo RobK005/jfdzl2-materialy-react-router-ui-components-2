@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 
 class CreateTask extends Component {
 
@@ -23,7 +24,7 @@ class CreateTask extends Component {
   render() {
     return(
       <div>
-        <input
+        <TextField
           type="text"
           value={this.state.name}
           onChange={this.handleChange}

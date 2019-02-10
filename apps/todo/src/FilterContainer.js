@@ -1,4 +1,8 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Paper from '@material-ui/core/Paper';
 
 class FilterContainer extends React.Component {
 
@@ -38,17 +42,17 @@ class FilterContainer extends React.Component {
 
   render() {
     return(
-      <div>
-        <input
+      <Paper>
+        <TextField
           onKeyDown={this.keyDownHandler}
           onChange={this.changeHandler} />
-        <select onChange={this.changeTypeHandler}>
-          <option value="all">All</option>
-          <option value="completed">Completed</option>
-          <option value="incomplete">Incomplete</option>
-        </select>
+        <Select value="all" onChange={this.changeTypeHandler}>
+          <MenuItem value="all">All</MenuItem>
+          <MenuItem value="completed">Completed</MenuItem>
+          <MenuItem value="incomplete">Incomplete</MenuItem>
+        </Select>
         {this.renderClearFiltersButton()}
-      </div>
+      </Paper>
     );
   }
 }

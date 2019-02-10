@@ -1,9 +1,10 @@
 import React from 'react';
+import List from '@material-ui/core/List';
 
 import Task from './Task';
 
 const TaskContainer = (props) => (
-  <div>
+  <List>
     {props.todo.map(task => (
       <Task
         key={`t-${task.id}`}
@@ -13,7 +14,7 @@ const TaskContainer = (props) => (
         updateHandler={(newName) => props.updateHandler(newName, task.id)}
       />
     ))}
-  </div>
+  </List>
 );
 
 export default TaskContainer;

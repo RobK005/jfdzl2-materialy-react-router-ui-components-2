@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import FilterContainer from './FilterContainer';
 import CreateTask from './CreateTask';
 import TasksContainer from './TaskContainer';
+import LinearProgress from '@material-ui/core/LinearProgress';
 class App extends Component {
 
   state = {
@@ -94,7 +95,8 @@ class App extends Component {
           filterActive={filterActive}
           resetFilters={this.resetFilters} />
         <CreateTask createHandler={this.handleCreate} />
-        <p style={{ display: showIndicator }}>Loading...</p>
+        {/* <p style={{ display: showIndicator }}>Loading...</p> */}
+        <LinearProgress style={{ display: showIndicator }} />
         <TasksContainer
           todo={filterActive ? filteredTasks : tasks}
           handleChange={this.handleChange}
